@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block content %} 
+   <div class="container">
+        {% if g.user.is_authenticated() %}
+        Welcome back {{g.user.nickname}}! | <a href="{{ url_for('logout') }}">Logout</a>
+        {% endif %}
+      <!-- Main hero unit for a primary marketing message or call to action -->
+      <div class="hero-unit">
+        <h1>Make your television experience interactive!</h1>
+        <br>
+        <p>Change the way you learn about television shows forever. Follow your friends, learn about new shows that pique
+        your interest! </p>
+        {% if g.user.is_authenticated() %}
+		<p><a class="btn btn-primary btn-large" href="{{url_for('login')}}">Go to your profile! &raquo;</a></p>		
+		{% else %}
+		<p><a class="btn btn-primary btn-large" href="{{url_for('login')}}">Create an Account and Get Started! &raquo;</a></p>
+		{% endif %}
+	  </div>
+
+      <!-- Example row of columns -->
+      <div class="row">
+        <div class="span4">
+          <h2>The Goal</h2>
+          <p>Ever wanted to figure out more seamlessly when your favorite television shows are on? The purpose of this project is to design a simple and cohesive way to figure out what your television schedule looks like each week. </p>
+        </div>
+        <div class="span4">
+          <h2>Getting Started</h2>
+          <p>Create an account and get started!</p>
+       </div>
+        <div class="span4">
+          <h2>Heading</h2>
+          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+          <p><a class="btn" href="#">View details &raquo;</a></p>
+        </div>
+      </div>
+
+      <hr>
+
+      <footer>
+        <p>&copy; Jeff Huang, Berkeley CS '16</p>
+      </footer>
+
+    </div> <!-- /container -->
+
+{% endblock %}
