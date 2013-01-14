@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+<link href="../static/style.css" rel="stylesheet">
+
+{% block content %} 
+
+
+{% for item in episodes %}
+	{% for item in item %}
+		{{ item }}
+		<br>
+	{% endfor %}
+{% endfor %}
+
+{% for item in synopsis %}
+	<h6>{{ item }}</h6>
+
+{% endfor %}
+
+
+
+<div id="navcontainer">
+<ul id="navlist1">
+<li id="active"><a href="#" id="current">Item one</a></li>
+<li><a href="#">Item two</a></li>
+<li><a href="#">Item three</a></li>
+<li><a href="#">Item four</a></li>
+<li><a href="#">Item five</a></li>
+</ul>
+</div>
+
+{% endblock %}

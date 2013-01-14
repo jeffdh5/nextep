@@ -2,7 +2,7 @@ from flask import render_template, request, flash, redirect, g, session, url_for
 from app import app, oid, lm, db
 from models import User, ROLE_USER, ROLE_ADMIN
 from flask.ext.login import login_user, logout_user, current_user, login_required
-
+from scraper import prev_and_next_ep, synopsis 
 
 @app.route('/')
 @app.route('/index')
@@ -14,6 +14,9 @@ def index():
 def logged_in():
 	return render_template("logged_in.html")
 
+@app.route('/profile', methods = ['GET', 'POST'])
+def profile():
+	return render_template("profile.html", episodes = prev_and_next_ep('http://www.tvrage.com/The_Office'), synopsis = synopsis('http://www.tvrage.com/The_Office'))
 
 @app.route('/login', methods = ['GET', 'POST'])
 @oid.loginhandler
