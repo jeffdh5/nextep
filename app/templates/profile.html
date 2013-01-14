@@ -1,31 +1,46 @@
 {% extends "base.html" %}
-<link href="../static/style.css" rel="stylesheet">
-
-{% block content %} 
-
-
-{% for item in episodes %}
-	{% for item in item %}
-		{{ item }}
-		<br>
-	{% endfor %}
-{% endfor %}
-
-{% for item in synopsis %}
-	<h6>{{ item }}</h6>
-
-{% endfor %}
-
-
-
-<div id="navcontainer">
-<ul id="navlist1">
-<li id="active"><a href="#" id="current">Item one</a></li>
-<li><a href="#">Item two</a></li>
-<li><a href="#">Item three</a></li>
-<li><a href="#">Item four</a></li>
-<li><a href="#">Item five</a></li>
-</ul>
+{% block content %}
+<div id="divide">
 </div>
+<div id="profile_body">
+	<div id="date_box">
+		<li class="m-btn white big"><h8>Monday</h8> <i class="m-icon-big-swapright m-icon-white"></i></li>
+		<br>
+		<li class="m-btn white big"><h8>Tuesday</h8> <i class="m-icon-big-swapright m-icon-white"></i></li>
+		<br>
+		<li class="m-btn white big"><h8>Wednesday</h8> <i class="m-icon-big-swapright m-icon-white"></i></li>
+		<br>
+		<li class="m-btn white big"><h8>Thursday</h8> <i class="m-icon-big-swapright m-icon-white"></i></li>
+		<br>
+		<li class="m-btn white big"><h8>Friday</h8> <i class="m-icon-big-swapright m-icon-white"></i></li>
+		<br>
+		<li class="m-btn white big"><h8>Saturday</h8> <i class="m-icon-big-swapright m-icon-white"></i></li>
+		<br>
+		<li class="m-btn white big"><h8>Sunday</h8> <i class="m-icon-big-swapright m-icon-white"></i></li>
+	</div>
+	<div id="episode_box">
+		<li class="m-btn white big"><h9>The Office</h9> <i class="m-icon-big-swapright m-icon-white"></i></li>
+		<br>
+		<li class="m-btn white big"><h9>How I Met Your Mother </h9> <i class="m-icon-big-swapright m-icon-white"></i></li>
+		<br>
+		<li class="m-btn white big"><h9>Parks and Recreation</h9> <i class="m-icon-big-swapright m-icon-white"></i></li>
+
+	</div>
+	<div id="episode_info">
+		<img src="{{ picture }}" style="width:465px">
+		<br>
+		<h8><b> {{ episodes[0] }}</b></h8>
+		<br>
+		<h8><b> {{ episodes[1] }}</b></h8>
+			
+		{% for item in synopsis %}
+			<h8>{{ item }}</h8>
+		{% endfor %}
+	</div>
+</div>
+	
+
+<br><br>
+
 
 {% endblock %}

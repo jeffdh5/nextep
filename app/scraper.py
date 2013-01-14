@@ -31,9 +31,41 @@ def prev_and_next_ep(url):
 				lst.append(item)
 	y = lst[0].findAll("h2")
 	for item in y:
+		prev_and_next.append((item.findAll(text=True)))	
+	next = ''
+	prev = ''
+	z = 'next'
+	for item in prev_and_next:
+		if str(item) == 'Prev:':
+			z = 'prev'
+		if z == 'next':
+			next += str(item)
+		elif z == 'prev':
+			prev += str(item)
+	return next
+	
+	"""	prev_and_next = []
+	for item in div:
+		x = item.find("span", "content_title")
+		if x:
+			if x.find(text=True) == 'Episode Info':
+				lst.append(item)
+	y = lst[0].findAll("h2")
+	for item in y:
 		prev_and_next.append((item.findAll(text=True)))
 	return prev_and_next
-
+	"""
+@memoize
+def picture(url):
+	parser = html5lib.HTMLParser()
+	tag_soup = urllib2.urlopen(url).read()
+	root = fromstring(tag_soup)
+	string = tostring(root, pretty_print=True)
+	soup = BeautifulSoup(string)
+	x = soup.find("div", "image_box")
+	y = x.find("img")
+	return str(y["src"])
+	
 @memoize
 def synopsis(url='http://www.tvrage.com/The_Office'):
 	"""Returns the synopsis."""
@@ -44,7 +76,3 @@ def synopsis(url='http://www.tvrage.com/The_Office'):
 	soup = BeautifulSoup(string)
 	div = soup.find("div", "show_synopsis")
 	return div.findAll(text=True)
-
-def synopsis_regex():
-	print(re.findall(r'[^&#;\+][^&#;\+]', '&#13;\n\t\t\t\tA mockumentary about the modern workplace'))
-	

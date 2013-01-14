@@ -1,0 +1,43 @@
+h8{
+font-family: 'Raleway';
+font-size:0.8em; 
+font-weight:100;
+}
+
+h9{
+font-family: 'Raleway';
+font-size:0.6em; 
+font-weight:100;
+}
+	
+#profile_body{
+width:900px;
+height:500px;
+margin-left: auto;
+margin-right: auto;
+}
+
+#divide{
+height: 50px; 
+}
+
+#date_box{
+width: 210px;
+height:500px;
+float:left;
+}
+
+#episode_box{
+widht: 210px;
+height:500px;
+float:left;
+overflow:auto;
+}
+
+#episode_info{
+text-align:center;
+width:480px;
+height:400px;
+float:right;
+overflow:auto;
+}

@@ -2,22 +2,23 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Bootstrap, from Twitter</title>
+    <title>Next Ep</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
 
     <!-- Le styles -->
-    <link href="../static/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="../static/bootstrap/css/bootstrap.min.css" rel="stylesheet"> 
+    <link href="../static/bootstrap/css/m-styles.min.css" rel="stylesheet"> 
+    <link href="../static/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="../static/profile_style.css" rel="stylesheet">
+
     <style type="text/css">
       body {
         padding-top: 60px;
         padding-bottom: 40px;
       }
     </style>
-    <link href="../static/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
-
-	
   </head>
 
   <body>
@@ -30,11 +31,11 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand" href="{{ url_for('index') }}">Next Episode?</a>
+          <a class="brand" href="{{ url_for('index') }}">NextEp</a>
           <div class="nav-collapse collapse">
             <ul class="nav">
               <li class="active"><a href="#">Home</a></li>
-              <li><a href="#about">About</a></li>
+              <li><a href="{{ url_for('profile') }}">TV Schedule</a></li>
               <li><a href="#contact">Contact</a></li>
             </ul>
             <form class="navbar-form pull-right">
@@ -56,7 +57,9 @@
     <!-- Placed at the end of the document so the pages load faster -->
 
 
-
+    <script src="../static/bootstrap/js/latestjquery.js"></script>
+    <script src="../static/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../static/bootstrap/js/m-radio.min.js"></script>
 
   </body>
 </html>

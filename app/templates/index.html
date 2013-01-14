@@ -11,7 +11,7 @@
         <p>Change the way you learn about television shows forever. Follow your friends, learn about new shows that pique
         your interest! </p>
         {% if g.user.is_authenticated() %}
-		<p><a class="btn btn-primary btn-large" href="{{url_for('login')}}">Go to your profile! &raquo;</a></p>		
+		<p><a class="btn btn-primary btn-large" href="{{url_for('profile')}}">Go to your profile! &raquo;</a></p>		
 		{% else %}
 		<p><a class="btn btn-primary btn-large" href="{{url_for('login')}}">Create an Account and Get Started! &raquo;</a></p>
 		{% endif %}
