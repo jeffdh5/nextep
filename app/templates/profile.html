@@ -29,11 +29,10 @@
 	<div id="episode_info">
 		<img src="{{ picture }}" style="width:465px">
 		<br>
-		<h8><b> {{ episodes[0] }}</b></h8>
-		<br>
-		<h8><b> {{ episodes[1] }}</b></h8>
-			
-		{% for item in synopsis %}
+		<h2><u>Next Episode: </u></h1><h8><b> {{ episodes[0] }}</b></h8>
+		<h2><u>Previous Episode:</u></h2><h8><b> {{ episodes[1] }}</b></h8>
+		<h2><u>Synopsis:</u></h2>
+			{% for item in synopsis %}
 			<h8>{{ item }}</h8>
 		{% endfor %}
 	</div>

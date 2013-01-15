@@ -16,7 +16,11 @@ def logged_in():
 
 @app.route('/profile', methods = ['GET', 'POST'])
 def profile():
-	return render_template("profile.html", episodes=prev_and_next_ep('http://www.tvrage.com/The_Office'), synopsis=synopsis('http://www.tvrage.com/The_Office'), picture = picture('http://www.tv.com/shows/the-office/'))
+	return render_template("profile.html", episodes=prev_and_next_ep('http://www.tvrage.com/The_Office', 'str'), synopsis=synopsis('http://www.tvrage.com/The_Office'), picture = picture('http://www.tv.com/shows/the-office/'))
+
+@app.route('/edit_shows', methods = ['GET', 'POST'])
+def edit_shows():
+	return render_template("edit_shows.html")
 
 @app.route('/login', methods = ['GET', 'POST'])
 @oid.loginhandler

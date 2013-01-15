@@ -12,9 +12,9 @@ def memoize(f):
             cache[x] = f(*x)
         return cache[x]
     return memf
-    
+
 @memoize
-def prev_and_next_ep(url):
+def prev_and_next_ep(url, str_or_lst):
 	"""Next episode, followed by previous episode, returned in the form of a list."""
 	parser = html5lib.HTMLParser()
 	tag_soup = urllib2.urlopen(url).read()
@@ -24,6 +24,8 @@ def prev_and_next_ep(url):
 	div = soup.findAll("div", "grid_7_5 box margin_top_bottom")
 	lst = []
 	prev_and_next = []
+	next = ''
+	prev = ''
 	for item in div:
 		x = item.find("span", "content_title")
 		if x:
@@ -32,18 +34,16 @@ def prev_and_next_ep(url):
 	y = lst[0].findAll("h2")
 	for item in y:
 		prev_and_next.append((item.findAll(text=True)))	
-	next = ''
-	prev = ''
-	z = 'next'
-	for item in prev_and_next:
-		if str(item) == 'Prev:':
-			z = 'prev'
-		if z == 'next':
+	if str_or_lst == 'lst':
+		return prev_and_next
+	elif str_or_lst == 'str':
+		for item in prev_and_next[0][1:]:
 			next += str(item)
-		elif z == 'prev':
+		for item in prev_and_next[1][1:]:
 			prev += str(item)
-	return next
+		return (next, prev)
 	
+
 	"""	prev_and_next = []
 	for item in div:
 		x = item.find("span", "content_title")
@@ -76,3 +76,4 @@ def synopsis(url='http://www.tvrage.com/The_Office'):
 	soup = BeautifulSoup(string)
 	div = soup.find("div", "show_synopsis")
 	return div.findAll(text=True)
+	
