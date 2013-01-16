@@ -1,40 +1,51 @@
 {% extends "base.html" %}
 {% block content %}
+
 <div id="divide">
 </div>
 <div id="profile_body">
 	<div id="date_box">
-		<li class="m-btn white big"><h8>Monday</h8> <i class="m-icon-big-swapright m-icon-white"></i></li>
-		<br>
-		<li class="m-btn white big"><h8>Tuesday</h8> <i class="m-icon-big-swapright m-icon-white"></i></li>
-		<br>
-		<li class="m-btn white big"><h8>Wednesday</h8> <i class="m-icon-big-swapright m-icon-white"></i></li>
-		<br>
-		<li class="m-btn white big"><h8>Thursday</h8> <i class="m-icon-big-swapright m-icon-white"></i></li>
-		<br>
-		<li class="m-btn white big"><h8>Friday</h8> <i class="m-icon-big-swapright m-icon-white"></i></li>
-		<br>
-		<li class="m-btn white big"><h8>Saturday</h8> <i class="m-icon-big-swapright m-icon-white"></i></li>
-		<br>
-		<li class="m-btn white big"><h8>Sunday</h8> <i class="m-icon-big-swapright m-icon-white"></i></li>
+		{% for day in week %}
+		<form method=post style="display:inline">
+			<input name="day" style="display:none" value="{{ day.name }}">
+			<button class="m-btn white big"><h8>{{ day.name }}</h8> <i class="m-icon-big-swapright m-icon-white"></i></button>
+		</form>
+		{% endfor %}
 	</div>
 	<div id="episode_box">
-		<li class="m-btn white big"><h9>The Office</h9> <i class="m-icon-big-swapright m-icon-white"></i></li>
-		<br>
-		<li class="m-btn white big"><h9>How I Met Your Mother </h9> <i class="m-icon-big-swapright m-icon-white"></i></li>
-		<br>
-		<li class="m-btn white big"><h9>Parks and Recreation</h9> <i class="m-icon-big-swapright m-icon-white"></i></li>
-
+		{% if shows %}
+			{% if shows.all() == [] %}
+				<h8> There are no shows in your list for this day! Add some shows! </h8>
+			{% else %}
+				{% for show in shows %}
+					<form method=post style="display:inline">
+						<input name="day" style="display:none" value="{{ day.name }}">
+						<input name="show" style="display:none" value="{{ show.name }}">			
+						<button class="m-btn white big"><h9>{{ show.name }}</h9> <i class="m-icon-big-swapright m-icon-white"></i></button>
+					</form>
+				{% endfor %}
+			{% endif %}
+		{% else %}
+			<h8> Click on a day to see that day's shows! </h8>
+		{% endif %}
 	</div>
 	<div id="episode_info">
-		<img src="{{ picture }}" style="width:465px">
-		<br>
-		<h2><u>Next Episode: </u></h1><h8><b> {{ episodes[0] }}</b></h8>
-		<h2><u>Previous Episode:</u></h2><h8><b> {{ episodes[1] }}</b></h8>
-		<h2><u>Synopsis:</u></h2>
-			{% for item in synopsis %}
-			<h8>{{ item }}</h8>
-		{% endfor %}
+		{% if info %}
+			<h7><b>{{ name }} </b></h7><br><br>
+			<img src="{{ picture }}" alt="The Picture" width=460px><br><br>
+			<h8><b><u>Next Episode:</u></b></h8><br>
+			<h8>{{ next }}</h8><br><br>
+			<h8><b><u>Previous Episode:</u></b></h8><br>
+			<h8>{{ prev }}</h8><br><br>
+			<h8><b><u>Synopsis:</u></b></h8><br>
+			<h10>{% for item in synopsis %}
+					{{ item }}
+				{% endfor %}
+			</h10>				
+		{% else %}
+			<h8> Select a TV show to render information!</h8>	
+		{% endif %}		
+			
 	</div>
 </div>
 	

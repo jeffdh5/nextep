@@ -1,12 +1,24 @@
+h7{
+font-family: 'Raleway';
+font-size: 25px; 
+font-weight:100;
+}
+
 h8{
 font-family: 'Raleway';
-font-size: 0.9em; 
+font-size: 14px; 
 font-weight:100;
 }
 
 h9{
 font-family: 'Raleway';
-font-size:0.6em; 
+font-size:10px; 
+font-weight:100;
+}
+
+h10{
+font-family: 'Raleway';
+font-size:12px; 
 font-weight:100;
 }
 	
@@ -28,16 +40,14 @@ float:left;
 }
 
 #episode_box{
-widht: 210px;
+width:210px;
 height:500px;
 float:left;
-overflow:auto;
 }
 
 #episode_info{
-text-align:center;
 width:480px;
-height:400px;
-float:right;
+height:500px;
+text-align:center;
 overflow:auto;
 }

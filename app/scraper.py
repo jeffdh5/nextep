@@ -14,8 +14,8 @@ def memoize(f):
     return memf
 
 @memoize
-def prev_and_next_ep(url, str_or_lst):
-	"""Next episode, followed by previous episode, returned in the form of a list."""
+def prev_and_next_ep(url):
+	"""Next episode, followed by previous episode."""
 	parser = html5lib.HTMLParser()
 	tag_soup = urllib2.urlopen(url).read()
 	root = fromstring(tag_soup)
@@ -34,27 +34,12 @@ def prev_and_next_ep(url, str_or_lst):
 	y = lst[0].findAll("h2")
 	for item in y:
 		prev_and_next.append((item.findAll(text=True)))	
-	if str_or_lst == 'lst':
-		return prev_and_next
-	elif str_or_lst == 'str':
-		for item in prev_and_next[0][1:]:
-			next += str(item)
-		for item in prev_and_next[1][1:]:
-			prev += str(item)
-		return (next, prev)
+	for item in prev_and_next[0][1:]:
+		next += str(item)
+	for item in prev_and_next[1][1:]:
+		prev += str(item)
+	return (next, prev)
 	
-
-	"""	prev_and_next = []
-	for item in div:
-		x = item.find("span", "content_title")
-		if x:
-			if x.find(text=True) == 'Episode Info':
-				lst.append(item)
-	y = lst[0].findAll("h2")
-	for item in y:
-		prev_and_next.append((item.findAll(text=True)))
-	return prev_and_next
-	"""
 @memoize
 def picture(url):
 	parser = html5lib.HTMLParser()

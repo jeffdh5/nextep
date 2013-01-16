@@ -2,11 +2,11 @@
 {% block content %} 
 <div class="container" style="height:100px"></div>
 <div class="container" style="width:400px">
-	<h1>Congratulations on logging in!</h1>
+	<h1>Show Added!</h1>
 	<br>
-	<p>Don't be too proud of yourself though. It was a lot harder for me to make this log in page than it was
-	for you to log in. You're welcome, douche. </p>
-
 	<a href="{{ url_for('index')}}">Click to be redirected to the home page :) </a>
+	<br><br>
+	<a href="{{ url_for('add_shows_admin')}}">Click to add another show. </a>
+
 </div>
 {% endblock %}

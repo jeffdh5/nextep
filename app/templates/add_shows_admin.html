@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container" style="width:400px;text-align:center">
+	<h1>Admin Only! Add a tv show to the database.</h1>
+	<br>
+     <form method=post>
+     	<h5>Name: <br><input type="text" name="Name" placeholder="Enter a show name"><br></input>
+     	Day:<br><input type="text" name="Day" placeholder="Enter the day this show airs!"><br></input>
+     	Tv.com link:<br> <input type="text" name="TV.com" placeholder="Enter the tv.com link!"><br></input>
+     	Tvrage.com link:<br> <input type="text" name="TVRage.com" placeholder="Enter the tvrage.com link!"><br><br></input>
+     	<button class="btn btn-large btn-primary" type="submit">Add show!</button></h5>
+     </form>
+     <h1 style="color:#FF0000">{{ error }}</h1>
+</div>
+
+
+{% endblock %}
